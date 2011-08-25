@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="GBK"></constant>
+	
+	<package name="login" extends="struts-default">
+		
+		<action name="main">
+			<result>/main.jsp</result>
+		</action>		
+		
+		<action name="*_*" class="cn.cstp.org.action.{1}Action" method="{2}">
+			<result>/{0}Suc.jsp</result>
+		</action> 	
+						
+		 
+		<action name="*" class="cn.cstp.org.action.ErrorAction">
+			<result>/error.jsp</result>
+		</action>
+		
+		<!--  
+		
+		<action name="*User" class="cn.cstp.org.action.UserAction" method="{1}">
+			<result>/{1}UserSuc.jsp</result>
+		</action>	
+		
+		<action name="*MP3" class="cn.cstp.org.action.MP3Action" method="{1}">
+			<result>/{1}MP3Suc.jsp</result>
+		</action> 
+		-->
+		
+		
+		<!-- 
+			如果路径中没有通配符，则此Action优先级最高
+			如果路径中有通配符，不管是什么通配符，一律按顺序匹配
+		 -->		
+		
+	</package>
+
+</struts>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<include file="struts1.xml"/>
+	<include file="struts2.xml"/>
+	
+	
+	<package name="login" extends="struts-default">
+		<interceptors>
+			<interceptor name="timer" class="com.opensymphony.xwork2.interceptor.TimerInterceptor"></interceptor>
+		</interceptors>
+		<default-action-ref name="error"/>
+		<action name="error">
+			<result>/error.jsp</result>
+		</action>
+		<action name="main">
+			<result>/main.jsp</result>
+		</action>
+		
+		<action name="login" class="cn.cstp.org.action.LoginAction">
+			<result name="success" type="redirect">
+				/msg/loginSuc.jsp?username=${username}
+			</result>
+			<result name="error" type="redirect">/msg/loginFail.jsp</result>
+			<interceptor-ref name="modelDriven"/>			
+			<interceptor-ref name="params"/>			
+			<interceptor-ref name="timer"/>				
+			<interceptor-ref name="logger"/>			
+		</action>	
+		<action name="test" class="cn.cstp.org.action.TestAction">
+			<result name="success">/1.jsp</result>
+		</action>
+		
+		<action name="test3" class="cn.cstp.org.action.TestAction">
+			<result name="success" type="dispatcher">/admin/4.jsp</result>
+		</action>
+		<!-- 
+		<action name="add" class="cn.cstp.org.action.TestCRUD" method="add">
+			<result>/msg/addSuc.jsp</result>			
+		</action>
+		
+		<action name="modify" class="cn.cstp.org.action.TestCRUD" method="modify">
+			<result>/msg/modifySuc.jsp</result>			
+		</action>
+		
+		<action name="del" class="cn.cstp.org.action.TestCRUD" method="del">
+			<result>/msg/delSuc.jsp</result>			
+		</action>
+		
+		<action name="query" class="cn.cstp.org.action.TestCRUD" method="query">
+			<result>/msg/querySuc.jsp</result>			
+		</action>
+	 -->
+	 
+	 <action name="*Mp3" class="cn.cstp.org.action.TestCRUD" method="{1}">
+	 	 <result>/msg/{1}Suc.jsp</result>
+	 </action>
+	 <action name="testCRUD" class="cn.cstp.org.action.TestCRUD">
+			<result>/msg/dmiSuc.jsp</result>			
+		</action>
+	 
+	</package>
+	
+	
+
+</struts>

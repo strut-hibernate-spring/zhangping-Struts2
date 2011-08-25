@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	
+	<package name="test1" extends="login" namespace="/test1">
+		
+
+		<action name="add" class="cn.cstp.org.action.Test1Action" method="add">
+			<result name="success">/msg/addSuc.jsp</result>
+			
+		</action>
+		
+		<action name="delete" class="cn.cstp.org.action.Test1Action" method="delete">
+			<result name="success">/msg/deleteSuc.jsp</result>
+		</action>
+		
+		<action name="modify" class="cn.cstp.org.action.Test1Action" method="modify">
+			<result name="success">/msg/modifySuc.jsp</result>
+		</action>
+		
+		<action name="query" class="cn.cstp.org.action.Test1Action" method="query">
+			<result name="success">/msg/querySuc.jsp</result>
+		</action>
+	
+	 
+	 <!--  
+	 <action name="test1" class="cn.cstp.org.action.Test1Action">
+			<result name="success">/msg/test1Suc.jsp</result>
+	 </action>
+	 -->
+	</package>
+	
+	
+
+</struts>

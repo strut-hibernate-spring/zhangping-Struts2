@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<include file="struts1.xml"/>
+	<include file="struts2.xml"/>
+	<include file="struts3.xml"/>
+	<include file="struts4.xml"/>
+	<package name="login" extends="struts-default">
+		
+		<interceptors>
+			<interceptor-stack name="myItc">
+				<interceptor-ref name="timer"/>
+				<interceptor-ref name="params"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-action-ref name="error"/>
+		<action name="error">
+			<result>/error.jsp</result>
+		</action>
+		
+		<action name="login" class="cn.cstp.org.action.LoginAction">
+			<result name="success">/msg/loginSuc.jsp</result>
+			<result name="error">/msg/loginFail.jsp</result>
+			<interceptor-ref name="myItc"/>
+
+
+		</action>	
+		
+		<action name="test1" class="cn.cstp.org.action.Test1Action">
+			<result name="success">/msg/test1-1.jsp</result>
+			<interceptor-ref name="myItc"></interceptor-ref>
+		</action>
+		
+		<action name="main">
+			<result type="redirect">/main.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+
+</struts>

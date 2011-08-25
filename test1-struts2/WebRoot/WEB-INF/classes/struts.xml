@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="GBK"></constant>
+	<package name="test" extends="struts-default" namespace="/">
+		<action name="test" class="cn.cstp.org.action.TestAction">
+			<result name="success" type="chain">
+				<param name="actionName">test1</param>
+				<param name="namespace">/xxx</param>
+			</result>
+		</action>		
+	</package>
+	
+	<package name="test1" extends="struts-default" namespace="/xxx">
+		<action name="test1" class="cn.cstp.org.action.TestAction">
+			<result name="success" type="plaintext">
+				<param name="location">/test1Suc.jsp</param>
+				<param name="charSet">GBK</param>
+			</result>
+		</action>
+	</package>
+   
+
+</struts>

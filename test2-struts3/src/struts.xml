@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+
+	<package name="test" extends="struts-default">
+		<global-results>
+			<result name="global-exception">/global-exception.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="global-exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+			
+		<action name="login" class="cn.cstp.org.action.LoginAction">
+			<result name="success" type="redirect">/userSuc.jsp?username=${username}</result>
+			<result name="exception" type="dispatcher">/exception.jsp</result>
+			<exception-mapping result="exception" exception="java.sql.SQLException"></exception-mapping>
+		</action>
+	</package>
+   
+	
+</struts>
